@@ -10,150 +10,223 @@
 </head>
 <body>
 <header>
+    <!-- HEADER CON EL BOTON PARA SORTEAR, EL CONTADOR Y EL BOTON DE REINICIO -->
     <div class="container-fluid bg-primary d-flex justify-content-between">
-        <button onclick="cambiar()" class="btn btn-light btn-sm m-3">Sortear</button>
-        <h1 class="p-3 text-light">TORNEO</h1>
+        <button onclick="sorteoAutomatico(), iniciarTorneo()" class="btn btn-light btn-sm m-3">Sortear</button>
+        <div class="col-10 text-center">
+            <h1 class="p-3 text-light">TORNEO DAW</h1>
+            <p class="text-light h5" id="contador">Duración del torneo</p>
+        </div>
+        <button onclick="resetear()" class="btn btn-light btn-sm m-3">Reiniciar</button>
     </div>
 </header>
 <section>
-    <div class="row container-fluid d-flex m-0 bg-secondary">
+    <!-- VIDEO QUE APARECE DESPUÉS DEL SORTEO -->
+    <div id="video" class="m-2" style="display: none; text-align: center;">
+        <video id="videoFinal" width="640" height="360" controls>
+            <source src="./images/video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="row container-fluid d-flex m-0">
         <div class="col-6">
             <div class="row align-items-center">
+                <!-- COLUMNA PARA VER LOS ENFRENTAMIENTOS DE OCTAVOS -->
                 <div class="col-4">
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d1">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Octavos</strong>
                     </div>
                     <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d1">
+                    </div>
+                    <div class="row m-2 mb-5">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d2">
                     </div>
                     <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d3">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d3">
                     </div>
                     <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d4">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d4">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LOS POSIBLES FUTUROS ENFRENTAMIENTOS DE CUARTOS -->
                 <div class="col-4">
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Cuartos</strong>
                     </div>
                     <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LA POSIBLE FUTURA SEMIFINAL -->
                 <div class="col-4">
+                    <div class="row m-2 justify-content-end h3">
+                        <strong class="text-end">Semi</strong>
+                    </div>
                     <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="row align-items-center">
+                <!-- COLUMNA PARA VER LA POSIBLE FUTURA SEMIFINAL -->
                 <div class="col-4">
+                    <div class="row m-2 justify-content-start h3">
+                        <strong class="text-start">final</strong>
+                    </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LOS POSIBLES FUTUROS ENFRENTAMIENTOS DE CUARTOS -->
                 <div class="col-4">
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Cuartos</strong>
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                    <div class="row justify-content-end m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LOS ENFRENTAMIENTOS DE OCTAVOS -->
                 <div class="col-4">
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d5">
-                    </div>
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d6">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Octavos</strong>
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d7">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d5">
+                    </div>
+                    <div class="row justify-content-end m-2 mb-5">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d6">
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded" id="d8">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d7">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row container-fluid d-flex m-0 bg-warning justify-content-center mb-4">
-        <div class="row align-items-center justify-content-center m-2">
-            <img src="./images/default.jpg" alt="Por definir" class="rounded" style="height: 59px; width: auto;">
-        </div>
-    </div>
-    <div class="row container-fluid d-flex m-0 bg-danger justify-content-center mt-4 mb-4">
-        <div class="row align-items-center justify-content-center m-2">
-            <img src="./images/default.jpg" alt="Por definir" class="rounded" style="width: auto;">
-        </div>
-    </div>
-    <div class="row container-fluid d-flex m-0 bg-info justify-content-center mt-4">
-        <div class="row align-items-center justify-content-center m-2">
-            <img src="./images/default.jpg" alt="Por definir" class="rounded" style="height: 59px; width: auto;">
-        </div>
-    </div>
-    <div class="row container-fluid d-flex m-0 bg-success">
-        <div class="col-6">
-            <div class="row align-items-center">
-                <div class="col-4">
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row justify-content-end m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d8">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- FILA PARA VER UNO DE LOS FINALISTAS -->
+    <div class="row container-fluid d-flex m-0 justify-content-center mb-4">
+        <figure class="d-flex align-items-center justify-content-center m-2">
+            <figcaption>
+                <h1 class="display-6 me-5">Finalista</h1>
+            </figcaption>
+            <img src="./images/default.png" alt="Por definir" class="rounded" title="Por definir" style="width: 300px;">
+        </figure>
+    </div>
+    <!-- FILA PARA VER AL CAMPEÓN -->
+    <div class="row container-fluid d-flex m-0 justify-content-center mt-4 mb-4">
+        <figure class="d-flex align-items-center justify-content-center m-2">
+            <img src="./images/default.png" alt="Por definir" class="rounded" title="Por definir" style="width: 400px;">
+            <figcaption>
+                <h1 class="display-1 ms-5">¡CAMPEÓN!</h1>
+            </figcaption>
+        </figure>
+    </div>
+    <!-- FILA PARA VER UNO DE LOS FINALISTAS -->
+    <div class="row container-fluid d-flex m-0 justify-content-center mt-4">
+        <figure class="d-flex align-items-center justify-content-center m-2">
+            <figcaption>
+                <h1 class="display-6 me-5">Finalista</h1>
+            </figcaption>
+            <img src="./images/default.png" alt="Por definir" class="rounded" title="Por definir" style="width: 300px;">
+        </figure>
+    </div>
+    <div class="row container-fluid d-flex m-0">
         <div class="col-6">
             <div class="row align-items-center">
+                <!-- COLUMNA PARA VER LOS ENFRENTAMIENTOS DE OCTAVOS -->
                 <div class="col-4">
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Octavos</strong>
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d9">
+                    </div>
+                    <div class="row m-2 mb-5">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d10">
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d11">
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d12">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LOS POSIBLES FUTUROS ENFRENTAMIENTOS DE CUARTOS -->
                 <div class="col-4">
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Cuartos</strong>
                     </div>
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                 </div>
+                <!-- COLUMNA PARA VER LA POSIBLE FUTURA SEMIFINAL -->
                 <div class="col-4">
-                    <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                    <div class="row m-2 justify-content-end h3">
+                        <strong class="text-end">Semi</strong>
+                    </div>
+                    <div class="row m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row align-items-center">
+                <!-- COLUMNA PARA VER LA POSIBLE FUTURA SEMIFINAL -->
+                <div class="col-4">
+                    <div class="row m-2 justify-content-start h3">
+                        <strong class="text-start">final</strong>
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                </div>
+                <!-- COLUMNA PARA VER LOS POSIBLES FUTUROS ENFRENTAMIENTOS DE CUARTOS -->
+                <div class="col-4">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Cuartos</strong>
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
                     </div>
                     <div class="row justify-content-end m-2">
-                        <img src="./images/default.jpg" alt="Por definir" class="rounded">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded">
+                    </div>
+                </div>
+                <!-- COLUMNA PARA VER LOS ENFRENTAMIENTOS DE OCTAVOS -->
+                <div class="col-4">
+                    <div class="row m-2 justify-content-center h3">
+                        <strong class="text-center">Octavos</strong>
+                    </div>
+                    <div class="row justify-content-end m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d13">
+                    </div>
+                    <div class="row justify-content-end m-2 mb-5">
+                        <!-- Esta imagen no se ve en un principio (la ruta está mal adrede), en el script explico por qué -->
+                        <!-- Para visualizar la imagen simplemente hay que cambiarle el nombre de default2 a default -->
+                        <img src="./images/default2.png" alt="Por definir" title="Por definir" class="rounded" id="d14">
+                    </div>
+                    <div class="row justify-content-end m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d15">
+                    </div>
+                    <div class="row justify-content-end m-2">
+                        <img src="./images/default.png" alt="Por definir" title="Por definir" class="rounded" id="d16">
                     </div>
                 </div>
             </div>
